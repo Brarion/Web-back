@@ -1,0 +1,65 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet id="20201204-2235" author="Brarion">
+        <createTable tableName="oauth_client_details">
+            <column name="client_id" type="varchar(255)">
+                <constraints primaryKey="true" primaryKeyName="pk_oauth_client_details" unique="true" nullable="false"/>
+            </column>
+            <column name="resource_ids" type="varchar(255)"/>
+            <column name="client_secret" type="varchar(255)"/>
+            <column name="scope" type="varchar(255)"/>
+            <column name="authorized_grant_types" type="varchar(255)"/>
+            <column name="web_server_redirect_uri" type="varchar(255)"/>
+            <column name="authorities" type="varchar(255)"/>
+            <column name="access_token_validity" type="integer"/>
+            <column name="refresh_token_validity" type="integer"/>
+            <column name="additional_information" type="varchar(4096)"/>
+            <column name="autoapprove" type="varchar(255)"/>
+        </createTable>
+
+        <createTable tableName="oauth_client_token">
+            <column name="token_id" type="varchar(255)"/>
+            <column name="token" type="bytea"/>
+            <column name="authentication_id" type="varchar(255)">
+                <constraints primaryKey="true" primaryKeyName="pk_oauth_client_token" unique="true" nullable="false"/>
+            </column>
+            <column name="user_name" type="varchar(255)"/>
+            <column name="client_id" type="varchar(255)"/>
+        </createTable>
+
+        <createTable tableName="oauth_access_token">
+            <column name="token_id" type="varchar(255)"/>
+            <column name="token" type="bytea"/>
+            <column name="authentication_id" type="varchar(255)">
+                <constraints primaryKey="true" primaryKeyName="pk_oauth_access_token" unique="true" nullable="false"/>
+            </column>
+            <column name="user_name" type="varchar(255)"/>
+            <column name="client_id" type="varchar(255)"/>
+            <column name="authentication" type="bytea"/>
+            <column name="refresh_token" type="varchar(255)"/>
+        </createTable>
+
+        <createTable tableName="oauth_refresh_token">
+            <column name="token_id" type="varchar(255)"/>
+            <column name="token" type="bytea"/>
+            <column name="authentication" type="bytea"/>
+        </createTable>
+
+        <createTable tableName="oauth_code">
+            <column name="code" type="varchar(255)"/>
+            <column name="authentication" type="bytea"/>
+        </createTable>
+
+        <createTable tableName="oauth_approvals">
+            <column name="userid" type="varchar(255)"/>
+            <column name="clientid" type="varchar(255)"/>
+            <column name="scope" type="varchar(255)"/>
+            <column name="status" type="varchar(10)"/>
+            <column name="expiresat" type="timestamp"/>
+            <column name="lastmodifiedat" type="timestamp"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

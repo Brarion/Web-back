@@ -1,0 +1,61 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet id="2021206-2021" author="Brarion">
+        <insert tableName="publisher">
+            <column name="id" value="1"/>
+            <column name="name" value="Team17 Digital Ltd"/>
+        </insert>
+        <insert tableName="publisher">
+            <column name="id" value="2"/>
+            <column name="name" value="tinyBuild"/>
+        </insert>
+        <insert tableName="publisher">
+            <column name="id" value="3"/>
+            <column name="name" value="CD PROJEKT RED"/>
+        </insert>
+
+        <insert tableName="developer">
+            <column name="id" value="1"/>
+            <column name="name" value="Pathea Games"/>
+        </insert>
+        <insert tableName="developer">
+            <column name="id" value="2"/>
+            <column name="name" value="Lazy Bear Games"/>
+        </insert>
+        <insert tableName="developer">
+            <column name="id" value="3"/>
+            <column name="name" value="CD PROJEKT RED"/>
+        </insert>
+
+        <insert tableName="game">
+            <column name="id" value="1"/>
+            <column name="name" value="My Time At Portia"/>
+            <column name="preview_image_uri" value="my-time-at-portia.jpg"/>
+            <column name="price" value="420"/>
+            <column name="developer_id" value="1"/>
+            <column name="publisher_id" value="1"/>
+            <column name="description">Начните новую жизнь в очаровательном городе Портии! Восстановите мастерскую своего отца и верните ей былую славу!</column>
+        </insert>
+        <insert tableName="game">
+            <column name="id" value="2"/>
+            <column name="name" value="Graveyard Keeper"/>
+            <column name="preview_image_uri" value="graveyard-keeper.jpg"/>
+            <column name="price" value="345"/>
+            <column name="developer_id" value="2"/>
+            <column name="publisher_id" value="2"/>
+            <column name="description">Новая игра от создателей Punch Club - Graveyard Keeper. Самый недостоверный симулятор средневекового кладбища в этом году.</column>
+        </insert>
+        <insert tableName="game">
+            <column name="id" value="3"/>
+            <column name="name" value="The Witcher 3: Wild Hunt"/>
+            <column name="preview_image_uri" value="witcher-3-wild-hunt.jpg"/>
+            <column name="price" value="830"/>
+            <column name="developer_id" value="3"/>
+            <column name="publisher_id" value="3"/>
+            <column name="description">Когда в Северных королевствах бушует война, вы заключаете величайший контракт своей жизни — отыскать Дитя предназначения, живое оружие, которое может изменить облик мира.</column>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

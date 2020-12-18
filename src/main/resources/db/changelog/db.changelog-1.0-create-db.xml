@@ -1,0 +1,103 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet id="20201204-2200" author="Brarion">
+        <createTable tableName="developer">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_develop" unique="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="publisher">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_publisher" unique="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="game">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_game" unique="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="text"/>
+            <column name="preview_image_uri" type="text"/>
+            <column name="developer_id" type="bigint">
+                <constraints foreignKeyName="fk_game_developer_id" references="developer(id)"/>
+            </column>
+            <column name="publisher_id" type="bigint">
+                <constraints foreignKeyName="fk_game_publisher_id" references="publisher(id)"/>
+            </column>
+            <column name="price" type="bigint"/>
+        </createTable>
+
+        <createTable tableName="app_user">
+            <column name="id" type="uuid">
+                <constraints primaryKey="true" primaryKeyName="pk_poem_reader_user" unique="true" nullable="false"/>
+            </column>
+            <column name="username" type="varchar(100)" remarks="Имя пользователя">
+                <constraints unique="true" nullable="false"/>
+            </column>
+            <column name="password" type="varchar(100)" remarks="Пароль пользователя">
+                <constraints nullable="false"/>
+            </column>
+            <column name="account_non_expired" type="boolean" defaultValue="true">
+                <constraints nullable="false"/>
+            </column>
+            <column name="account_non_locked" type="boolean" defaultValue="true">
+                <constraints nullable="false"/>
+            </column>
+            <column name="credentials_non_expired" type="boolean" defaultValue="true">
+                <constraints nullable="false"/>
+            </column>
+            <column name="enabled" type="boolean" defaultValue="true">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cache" type="bigint" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="authority">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" primaryKeyName="authority_pk" nullable="false" unique="true"/>
+            </column>
+            <column name="name" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="app_user_authority">
+            <column name="app_user_id" type="uuid">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="app_user_authority_pk"
+                             foreignKeyName="app_user_authority_app_user_fk"
+                             references="app_user(id)"/>
+            </column>
+            <column name="authority_id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="app_user_authority_pk"
+                             foreignKeyName="app_user_authority_authority_fk" references="authority(id)"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="app_user_game">
+            <column name="app_user_id" type="uuid">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="app_user_game_pk"
+                             foreignKeyName="app_user_game_app_user_fk"
+                             references="app_user(id)"/>
+            </column>
+            <column name="game_id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="app_user_game_pk"
+                             foreignKeyName="app_user_game_game_fk" references="game(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

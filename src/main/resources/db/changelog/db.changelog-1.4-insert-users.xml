@@ -1,0 +1,30 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet id="2021206-1909" author="Brarion">
+        <insert tableName="app_user">
+            <column name="id" value="123e4567-e89b-12d3-a456-426655440000"/>
+            <column name="username" value="Djerys"/>
+            <!--            reader1234-->
+            <column name="password" value="$2a$08$dwYz8O.qtUXboGosJFsS4u19LHKW7aCQ0LXXuNlRfjjGKwj5NfKSe"/>
+            <column name="cache" value="1000000"/>
+        </insert>
+        <insert tableName="app_user">
+            <column name="id" value="60d6d333-3d39-4bb9-ab98-700ce70610ae"/>
+            <column name="username" value="Brarion"/>
+            <column name="password" value="$2y$08$mdnfhDZeTL74RdAuMfcAdOWCmw8lCJlUKq2sky/6J1iuMe0ygZO8G"/>
+            <column name="cache" value="1000"/>
+        </insert>
+
+        <insert tableName="app_user_authority">
+            <column name="app_user_id" value="123e4567-e89b-12d3-a456-426655440000"/>
+            <column name="authority_id" value="2"/>
+        </insert>
+        <insert tableName="app_user_authority">
+            <column name="app_user_id" value="60d6d333-3d39-4bb9-ab98-700ce70610ae"/>
+            <column name="authority_id" value="2"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,18 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet id="20201206-1849" author="Brarion">
+        <insert tableName="oauth_client_details">
+            <column name="client_id" value="steam-like-app-api-client"/>
+            <column name="resource_ids" value="resource-server-rest-api"/>
+            <!--            spring-security-oauth2-read-client-password1234-->
+            <column name="client_secret" value="$2a$04$WGq2P9egiOYoOFemBRfsiO9qTcyJtNRnPKNBl5tokP7IP.eZn93km"/>
+            <column name="scope" value="read,write"/>
+            <column name="authorized_grant_types" value="password,authorization_code,refresh_token,implicit"/>
+            <column name="authorities" value="user"/>
+            <column name="access_token_validity" value="10800"/>
+            <column name="refresh_token_validity" value="2592000"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
